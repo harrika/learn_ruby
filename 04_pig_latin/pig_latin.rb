@@ -14,6 +14,10 @@ end
 
 def trans(ww) 
   vowels = ['a','e','i','o','u']
+  if ww.include? 'qu'
+    ww = ww.gsub('qu','z')
+    qmarker = true
+  end
   if vowels.include?(ww[0])
     ss = ww+'ay'
   elsif vowels.include?(ww[1])
@@ -25,6 +29,9 @@ def trans(ww)
   elsif vowels.include?(ww[3])
     ss = ww[3,ww.length]
     ss = ss+ww[0]+ww[1]+ww[2]+'ay'
+  end
+  if qmarker
+    ss = ss.gsub('z','qu')
   end
   ss
 end
